@@ -1,10 +1,10 @@
 
-public class Cordinates {
+public class Coordinates {
 	public int x;
 	public int yp;
 	public int yn;
 	
-	public  Cordinates(double one, double ypos, double yneg)
+	public  Coordinates(double one, double ypos, double yneg)
 	{
 		x=(int) one;
 		yp=(int) ypos;

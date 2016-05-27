@@ -1,4 +1,7 @@
 import java.util.*;
+
+import graphing.Window;
+
 import java.applet.Applet;
 import java.awt.color.*;
 import java.awt.Graphics;
@@ -14,6 +17,9 @@ public class Graph extends Applet {
 	public void paint(Graphics g)
 	{
 		ConicE bb=new ConicE(70,75,69,42/*blaze it*/,15,40);
+		
+		
+		
 		super.init();
 		this.setSize(500,500);
 		this.setSize(500,500);
@@ -35,22 +41,23 @@ public class Graph extends Applet {
 		paper.drawLine(0, 251, 500, 251);
 		paper.drawLine(249, 0, 249, 500);
 		paper.drawLine(0, 249, 500, 249);
-		this.getCurve(bb);
+		
+		
 	}
 	public void getCurve(ConicE a)
 	{
-		Cordinates[] coords= new Cordinates[500];
+		Coordinates[] coords= new Coordinates[500];
 		for(int i=0;i<250;i++)
 		{
-			coords[i] = new Cordinates(i,a.getYAtXpos(i),a.getYAtXneg(i));
+			coords[i] = new Coordinates(i,a.getYAtXpos(i),a.getYAtXneg(i));
 		}
 		for(int i=-250;i<0;i++)
 		{
-			coords[i+500] = new Cordinates(i,a.getYAtXpos(i),a.getYAtXneg(i));
+			coords[i+500] = new Coordinates(i,a.getYAtXpos(i),a.getYAtXneg(i));
 		}
 		drawCurve(coords);
 	}
-	public void drawCurve(Cordinates[] c)
+	public void drawCurve(Coordinates[] c)
 	{
 		for(int i = 0; i < c.length-2; i+=2)
 		{
