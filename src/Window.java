@@ -61,7 +61,7 @@ public class Window extends JPanel{
 	@Override
     protected void paintComponent(Graphics g) {
 		//bb=new ConicE(70,75,69,42,15,40);
-		bb=new ConicE(5,3,6,3,2,7);
+		bb=new ConicE(1,1,1,1,1,1);
 		getCurve(bb);
 		
 		

@@ -1,5 +1,6 @@
 import java.util.*;
 import java.math.*;
+import java.text.DecimalFormat;
 public class ConicE {
 	public double a;
 	public double b;
@@ -39,10 +40,11 @@ public class ConicE {
 		{
 			cp=1/2;
 		}
+		DecimalFormat df2 = new DecimalFormat("#.000");
 		dp=d*cos+e*sin;
 		ep=e*cos-d*sin;
-		standnote=(ap+"u^2 + "+bp+"uv + "+cp+"v^2 + "+dp+"u + "+ep+"v + "+f+" = 0");
-		System.out.println(this.findAngleRotation());
+		standnote=(df2.format(ap)+"u^2 + "+df2.format(bp)+"uv + "+df2.format(cp)+"v^2 + "+df2.format(dp)+"u + "+df2.format(ep)+"v + "+df2.format(f)+" = 0");
+		System.out.println(df2.format(this.findAngleRotation()));
 		System.out.println(this.getStandardNote());
 		if(a==c&& a>0)
 		{
