@@ -21,10 +21,12 @@ public class Window extends JPanel{
 	private Component window;
 	private BufferedImage GamePicture;
 	private Graphics g;
+	private ConicE bb;
+	private Coordinates[] coords= new Coordinates[1000];
 	
 	
 	public Window(){
-		GamePicture = new BufferedImage(730, 730, BufferedImage.TYPE_INT_ARGB);
+		GamePicture = new BufferedImage(1050, 1050, BufferedImage.TYPE_INT_ARGB);
 		g = GamePicture.createGraphics();
 		
         Graphics2D g2d = GamePicture.createGraphics();
@@ -58,6 +60,9 @@ public class Window extends JPanel{
 	
 	@Override
     protected void paintComponent(Graphics g) {
+		//bb=new ConicE(70,75,69,42,15,40);
+		bb=new ConicE(5,3,6,3,2,7);
+		getCurve(bb);
 		
 		
 		/*
@@ -107,20 +112,26 @@ public class Window extends JPanel{
         
        // stateEngine.Render(g);
 		
-		BufferedImage graph = new BufferedImage(300,300, BufferedImage.TYPE_INT_ARGB);
+		BufferedImage graph = new BufferedImage(1000,1000, BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2 = graph.createGraphics();
-        for(int i = 0; i<3000; i++){
+        for(int i = 0; i<1000; i++){
         	//BufferedImage graph = new BufferedImage(300,300, BufferedImage.TYPE_INT_ARGB);
         	//Graphics2D g2 = graph.createGraphics();
         	g2.setColor(Color.RED);
         	//g2.fillRect((i/1000)+150, -(int)Math.pow((double)(i)/(10000.0),2)+200, 1, 1);
-        	g2.fillRect((i/10)+150, -(int)Math.pow((double)(i/100.0),(2.0))+200, 1, 1);
+        	//g2.fillRect((i/10)+150, -(int)Math.pow((double)(i/100.0),(2.0))+200, 1, 1);
+        	if(coords[i].getYNeg() != 0){
+        		g2.fillRect(coords[i].getX()+500, -(int)(coords[i].getYNeg())+500, 1, 1);
+            	g2.fillRect(coords[i].getX()+500, -(int)(coords[i].getYPos())+500, 1, 1);
+        	}
+        	
         	//g2.fillRect(i+150+1, -(int)Math.pow((double)(i+1),2)/80+200, 1, 1);
         	//g2.drawLine((i*10)+150, -(int)Math.pow((double)i,2)+200, (i*10+1)+150, -(int)Math.pow((double)(i+1),2)+200);
         	//g.drawImage(graph, 0, 0, 300, 300, window);
         	
         	
         }
+        /*
         for(int i = 0; i<300; i++){
         	//BufferedImage graph = new BufferedImage(300,300, BufferedImage.TYPE_INT_ARGB);
         	//Graphics2D g2 = graph.createGraphics();
@@ -151,14 +162,33 @@ public class Window extends JPanel{
         	
         	
         }
+        */
         //graph.SCA
        // graph.SCALE_SMOOTH();
-        g.drawImage(graph.getScaledInstance(700, 700, 0), 0, 0, window);
+       // g.drawImage(graph.getScaledInstance(700, 700, 0), 0, 0, window);
+        g.drawLine(500, 1000, 500, 0);
+        g.drawLine(0, 500, 1000, 500);
+        g.drawImage(graph, 0, 0, window);
         //g.drawArc(50, 50, 90, 90, 0, 90);
         //repaint();
 
        
 
     }
+	public void getCurve(ConicE a)
+	{
+		
+		for(int i=0;i<500;i++)
+		{
+			coords[i] = new Coordinates(i,a.getYAtXpos(i),a.getYAtXneg(i));
+		}
+		for(int i=-500;i<0;i++)
+		{
+			coords[i+1000] = new Coordinates(i,a.getYAtXpos(i),a.getYAtXneg(i));
+			
+			
+		}
+		
+	}
 
 }

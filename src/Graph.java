@@ -1,7 +1,5 @@
 import java.util.*;
 
-import graphing.Window;
-
 import java.applet.Applet;
 import java.awt.color.*;
 import java.awt.Graphics;
@@ -16,7 +14,7 @@ public class Graph extends Applet {
 	}
 	public void paint(Graphics g)
 	{
-		ConicE bb=new ConicE(70,75,69,42/*blaze it*/,15,40);
+		ConicE bb=new ConicE(70,75,69,42,15,40);
 		
 		
 		
